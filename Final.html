@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>휴가 나가고싶다...</title>
+    <style>
+        .formBox{
+            padding: 0.5rem 2rem;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div class="formBox">
+            <label for="title">군번</label>
+            <input type="text" id="title" placeholder="Title"/>
+        </div>
+        <div class="formBox">
+            <label for="yr">시간</label>
+            <input type="number" id="yr" placeholder="Year"/>
+        </div>
+        <div class="formBox">
+            <button id="btn">입력</button>
+        </div>
+        <div id="msg">
+            <pre></pre>
+        </div>
+    </form>
+    <script>
+        let number = [];
+        // example {id:1592304983049, title: 'Deadpool', year: 2015}
+        const addNumber = (ev)=>{
+            ev.preventDefault();  //to stop the form submitting
+            let number = {
+                id: Date.now(),
+                title: document.getElementById('name').value,
+                year: document.getElementById('time').value
+            }
+            number.push(movie);
+            document.forms[0].reset(); // to clear the form for the next entries
+            //document.querySelector('form').reset();
+
+            //for display purposes only
+            console.warn('added' , {movies} );
+            let pre = document.querySelector('#msg pre');
+            pre.textContent = '\n' + JSON.stringify(movies, '\t', 2);
+
+            //saving to localStorage
+            localStorage.setItem('VistedIndividuals', JSON.stringify(movies) );
+        }
+        document.addEventListener('DOMContentLoaded', ()=>{
+            document.getElementById('btn').addEventListener('click', addNumber);
+        });
+    </script>
+</body>
+<style> 
+    body { 
+        background-image: url('mbabane.jpg');
+        background-repeat: no-repeat ;
+    }
+</style>
+</html>
